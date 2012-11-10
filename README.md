@@ -13,3 +13,5 @@ Andres Tineo u201220973
 
 
 Link scrumy: http://scrumy.com/blunders25consists
+
+Link Bitacora: https://docs.google.com/spreadsheet/ccc?key=0ArkZsdqN-l6YdFdnQUp2T2FvazJyLXhOaEY0X0lUdnc
