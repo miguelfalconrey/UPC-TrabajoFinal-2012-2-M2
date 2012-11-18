@@ -4,3 +4,5 @@
 *.jar
 *.war
 *.ear
+/Crm/nbproject/private/
+/Crm/build/
