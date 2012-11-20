@@ -14,12 +14,12 @@ public class Ent_Cliente {
     private String ApellidoPaterno;
     private String ApellidoMaterno;
     private String correo;
-    private int dni;
-    private int telefono;
+    private String dni;
+    private String telefono;
     private String fechaContacto;
 
     public Ent_Cliente(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
-            String correo, int dni, int telefono, String fechaContacto) {
+            String correo, String dni, String telefono, String fechaContacto) {
         this.Nombres = Nombres;
         this.ApellidoPaterno = ApellidoPaterno;
         this.ApellidoMaterno = ApellidoMaterno;
@@ -61,19 +61,19 @@ public class Ent_Cliente {
         this.correo = correo;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

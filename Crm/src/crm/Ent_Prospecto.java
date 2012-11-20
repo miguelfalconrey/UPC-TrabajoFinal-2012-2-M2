@@ -16,7 +16,7 @@ public class Ent_Prospecto extends Ent_Cliente {
 
     public Ent_Prospecto(String EstadoProspecto, String Nombres,
             String ApellidoPaterno, String ApellidoMaterno,
-            String correo, int dni, int telefono, String fechaContacto) {
+            String correo, String dni, String telefono, String fechaContacto) {
             super(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
             this.EstadoProspecto = EstadoProspecto;
     }
