@@ -1,0 +1,84 @@
+                  Caso Profesores
+                  ===============
+ 
+La Universidad Perú va a contratar profesores para 
+sus distintas plazas. Existe 3 categorias: 
+- Auxiliar
+- Medio Tiempo
+- Tiempo Completo
+ 
+De los auxiliares se tiene la siguiente información:
+- Código
+- Nombre Completo
+- Titulo
+- Años de experiencia
+- Horas mensuales de trabajo
+- El pago por hora de trabajo es de 40 nuevos soles
+ 
+De los de a medio tiempo se tiene la siguiente información:
+- Código
+- Nombre Completo
+- Titulo
+- Universidad de Origen
+- Horas mensuales de trabajo
+- Años de experiencia
+- El pago por hora de trabajo depende de los años de experiencia:
+  * Hasta 5 años se paga 50 nuevos soles
+  * Pasado los 5 años se paga 70 nuevos soles
+ 
+De los de a tiempo completo se tiene la siguiente información:
+- Código
+- Nombre Completo
+- Titulo
+- Universidad de Origen
+- Código CIP (Colegio de Ingenieros del Perú)
+- Años de experiencia
+- Ellos trabajan 160 horas mensuales
+- El pago por hora de trabajo depende de los años de experiencia:
+  * Hasta 10 años de experiencia se paga 75 nuevos soles
+  * Pasado los 10 años de experiencia se paga 90 nuevos soles
+ 
+Se pide crear la aplicación TDD considerando las siguientes historias.
+ 
+Historia 1: (4 puntos)
+----------------------
+Como Administrador de Personal
+Quiero Registrar a un Profesor asistente
+De modo que luego pueda calcular su pago mensual
+
+Sugerencia: Crear los test unitarios:
+- Profesor auxiliar debe registrarse con los campos indicados
+- Profesor auxiliar debe calcular el total mensual a pagar
+
+ 
+Historia 2: (4 puntos)
+======================
+Como Administrador de Personal
+Quiero Registrar a un Profesor de medio tiempo
+De modo que luego puedar calcular su pago mensual
+
+Sugerencia: Crear los test unitarios:
+- Profesor a medio tiempo debe registrarse con los campos indicados
+- Profesor a medio tiempo debe calcular el total mensual a pagar
+
+ 
+Historia 3: (4 puntos)
+Como Administrador de Personal
+Quiero Registrar a un Profesor de tiempo completo
+De modo que luego pueda calcular su pago mensual
+
+Sugerencia: Crear los test unitarios:
+- Profesor a tiempo completo debe registrarse con los campos indicados
+- Profesor a tiempo completo debe calcular el total mensual a pagar
+
+ 
+Historia 4: (8 puntos)
+======================
+Como Administrador de Personal
+Quiero Calcular el Pago Mensual de un profesor 
+independientemente de su categoria
+
+Sugerencia: Crear los test unitarios:
+- Profesor auxiliar es un tipo de profesor
+- Profesor a medio tiempo es un tipo de profesor
+- Profesor a tiempo completo es un tipo de profesor
