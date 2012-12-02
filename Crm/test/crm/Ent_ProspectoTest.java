@@ -47,7 +47,7 @@ public class Ent_ProspectoTest {
         String result = instance.getEstadoProspecto();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -60,6 +60,6 @@ public class Ent_ProspectoTest {
         Ent_Prospecto instance = null;
         instance.setEstadoProspecto(EstadoProspecto);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 }
