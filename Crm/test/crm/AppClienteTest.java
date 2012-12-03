@@ -52,7 +52,7 @@ public class AppClienteTest {
         AppCliente instance = new AppCliente();
         instance.Registrar(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -66,7 +66,7 @@ public class AppClienteTest {
         int result = instance.getCantidadClientes();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -81,6 +81,6 @@ public class AppClienteTest {
         Ent_Cliente result = instance.buscar(dni);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 }

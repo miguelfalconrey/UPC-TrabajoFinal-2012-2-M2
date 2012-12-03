@@ -53,9 +53,13 @@ public class AppProspectoTest {
         AppProspecto instance = new AppProspecto();
         instance.Registrar(EstadoProspecto, Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
+    
+    
+    
+    
     /**
      * Test of getCantidadProspectos method, of class AppProspecto.
      */
@@ -67,7 +71,7 @@ public class AppProspectoTest {
         int result = instance.getCantidadProspectos();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -82,6 +86,6 @@ public class AppProspectoTest {
         Ent_Prospecto result = instance.buscar(dni);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 }
