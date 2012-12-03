@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Test AppUsuario
  */
 package crm;
 
@@ -12,7 +11,6 @@ import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 
 /**
- *
  * @author gerald
  */
 public class AppUsuarioTest {
@@ -40,32 +38,30 @@ public class AppUsuarioTest {
         boolean rpta = false;
 
         for (int i = 0; i < dni.length; i++) {
-
-            rpta = usu.RegistrarUsuario(dni[i], nombre[i], apellidopaterno[i], apellidomaterno[i], usuario[i], correo[i], fechaingreso[i], cargo[i], rol[i],
-                    contrasena[i], creadopor[i], fechadecreacion[i], actualizadopor[i], fechadeactualizacion[i]);
+        rpta = usu.RegistrarUsuario(dni[i], nombre[i], apellidopaterno[i], 
+               apellidomaterno[i], usuario[i], correo[i], fechaingreso[i], 
+               cargo[i], rol[i],contrasena[i], creadopor[i], fechadecreacion[i],
+               actualizadopor[i], fechadeactualizacion[i]);
         }
-
-        Usuario nuevo = usu.BuscarUsuario("u2012333");
-        //crea el usuario        
-
+        Usuario nuevo = usu.BuscarUsuario("u2012333");//crea el usuario        
         assertEquals(true, rpta);
     }
 
+    
     @Test
     public void testEliminarUsuario() throws Exception {
         testRegistrarUsuario(); //Llamando al primer test
-
         String usuario = "u2012333";
         usu.eliminarusuario(usuario);
-        //usu.eliminarusuario("u2012333d"); //Generar error
+        //usu.eliminarusuario("u2012333d");                   //Generar error
         Usuario nuevo = usu.BuscarUsuario(usuario);
         assertNull("El usuario " + usuario + " no existe.", nuevo);
     }
+
     
     @Test
     public void testModificarUsuario() throws Exception {
         testRegistrarUsuario(); //Llamando al primer test
-
         String dni = "34";
         String nombre = "Carlos";
         String apellidopaterno = "Lopez";
@@ -82,14 +78,14 @@ public class AppUsuarioTest {
         String fechadeactualizacion = "24/12/2012";
         
         usu.editarusuario(dni, nombre, apellidopaterno, apellidomaterno, usuario,
-                correo, fechaingreso, cargo, rol,
-                    contrasena, creadopor, fechadecreacion, actualizadopor, fechadeactualizacion);
-        //usu.eliminarusuario("u2012333d"); //Generar error
+                          correo, fechaingreso, cargo, rol, contrasena, creadopor,
+                          fechadecreacion, actualizadopor, fechadeactualizacion);
+        
+        //usu.eliminarusuario("u2012333d");                      //Generar error
         Usuario editar = usu.BuscarUsuario(usuario);
         assertEquals(cargo,editar.getCargo());
         assertEquals(rol,editar.getRol());
         assertEquals(actualizadopor,editar.getActualizadopor());
-    
     }
 
     @Test
@@ -97,13 +93,12 @@ public class AppUsuarioTest {
     testRegistrarUsuario();
     
     String usuario="u2012333";
+    //String usuario="u2012333xxx";                            //Generar error
     String contrasena="654321";
     boolean rpta = false;
     
     rpta=usu.validarusuariocontrasena(usuario,contrasena);
     assertEquals(true, rpta);
-            
     }
-    
-    
+ 
 }
