@@ -12,6 +12,8 @@ public class Ent_Prospecto extends Ent_Cliente {
     
     //Atributos de la clase
     
+    // private boolean estadoprospecto;
+    
     private String EstadoProspecto;
 
     public Ent_Prospecto(String EstadoProspecto, String Nombres,
