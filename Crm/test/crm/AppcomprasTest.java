@@ -1,67 +1,94 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Test AppCompras
  */
 package crm;
 
-import java.util.ArrayList;
+import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Miguel
+ * @author gerald
  */
 public class AppcomprasTest {
-    
-    public AppcomprasTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+
+    Appcompras com = new Appcompras();
+    //creacion de usuario
+
+    @Test
+    public void testRegistrarCompra() throws Exception {
+        String[] Tipodoc = {"FV", "BV"};
+        String[] Numdoc = {"001-234", "002-567"};
+        String[] Moneda = {"Soles", "Dolares"};
+        String[] Fechaemision = {"12/11/2012", "22/10/2012"};
+        String[] Formapago = {"Contado", "Credito"};
+        String[] Detalle = {"Notebook", "Tablet"};
+
+        boolean rpta = false;
+
+        for (int i = 0; i < Tipodoc.length; i++) {
+        rpta = com.RegistrarCompra(Tipodoc[i], Numdoc[i], Moneda[i], 
+               Fechaemision[i], Formapago[i], Detalle[i]);
+        }
+        Compra nuevo = com.BuscarCompra("001-234");       
+        assertEquals(true, rpta);
     }
 
-    /**
-     * Test of getdoc method, of class Appcompras.
-     */
+    
     @Test
-    public void testGetdoc() {
-        System.out.println("getdoc");
-        Appcompras instance = new Appcompras();
-        ArrayList expResult = null;
-        ArrayList result = instance.getdoc();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
+    public void testEliminarCompra() throws Exception {
+        testRegistrarCompra(); //Llamando al primer test
+        String Numdoc = "001-234";
+        com.eliminarcompra(Numdoc);
+//        com.eliminarcompra("001-234x");                   //Generar error
+        Compra nuevo = com.BuscarCompra(Numdoc);
+        assertNull("La compra " + Numdoc + " no existe.", nuevo);
     }
 
-    /**
-     * Test of getarticulo method, of class Appcompras.
-     */
-    @Test
-    public void testGetarticulo() {
-        System.out.println("getarticulo");
-        Appcompras instance = new Appcompras();
-        ArrayList expResult = null;
-        ArrayList result = instance.getarticulo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
-    }
+    
+//    @Test
+//    public void testModificarUsuario() throws Exception {
+//        testRegistrarUsuario(); //Llamando al primer test
+//        String dni = "34";
+//        String nombre = "Carlos";
+//        String apellidopaterno = "Lopez";
+//        String apellidomaterno = "Giraldo";
+//        String usuario = "u2012333";
+//        String correo = "u2012333@hotmail.com";
+//        String fechaingreso = "21/12/2012";
+//        String cargo = "Helpdesk";
+//        String rol =  "Super";
+//        String contrasena = "654321";
+//        String creadopor = "Adminweb";
+//        String fechadecreacion = "22/12/2012";
+//        String actualizadopor = "Miguel";
+//        String fechadeactualizacion = "24/12/2012";
+//        
+//        usu.editarusuario(dni, nombre, apellidopaterno, apellidomaterno, usuario,
+//                          correo, fechaingreso, cargo, rol, contrasena, creadopor,
+//                          fechadecreacion, actualizadopor, fechadeactualizacion);
+//        
+//        //usu.eliminarusuario("u2012333d");                      //Generar error
+//        Usuario editar = usu.BuscarUsuario(usuario);
+//        assertEquals(cargo,editar.getCargo());
+//        assertEquals(rol,editar.getRol());
+//        assertEquals(actualizadopor,editar.getActualizadopor());
+//    }
+//
+//    @Test
+//    public void testValidarUsuarioContrasena() throws Exception {
+//    testRegistrarUsuario();
+//    
+//    String usuario="u2012333";
+//    //String usuario="u2012333xxx";                            //Generar error
+//    String contrasena="654321";
+//    boolean rpta = false;
+//    
+//    rpta=usu.validarusuariocontrasena(usuario,contrasena);
+//    assertEquals(true, rpta);
+//    }
+ 
 }
