@@ -31,6 +31,21 @@ public class AppUsuario {
             }
         }
         return null;
+<<<<<<< HEAD
+=======
+    }
+    
+    public boolean ValidarUsuarioContrasena(String usu, String contrasena){
+        String mensaje = "";
+        
+        Usuario usuario = BuscarUsuario(usu);
+        if(usuario==null){
+            if (! mensaje.isEmpty())
+            throw new CRM_Exception(mensaje);
+        }
+        
+        return false;
+>>>>>>> 20851cdc1a5a0df080afb9d85b1e4897e1d47235
     }
 
     public void eliminarusuario(String usuario) {
