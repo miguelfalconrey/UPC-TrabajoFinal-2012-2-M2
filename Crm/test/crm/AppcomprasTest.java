@@ -50,26 +50,18 @@ public class AppcomprasTest {
 
     
 //    @Test
-//    public void testModificarUsuario() throws Exception {
-//        testRegistrarUsuario(); //Llamando al primer test
-//        String dni = "34";
-//        String nombre = "Carlos";
-//        String apellidopaterno = "Lopez";
-//        String apellidomaterno = "Giraldo";
-//        String usuario = "u2012333";
-//        String correo = "u2012333@hotmail.com";
-//        String fechaingreso = "21/12/2012";
-//        String cargo = "Helpdesk";
-//        String rol =  "Super";
-//        String contrasena = "654321";
-//        String creadopor = "Adminweb";
-//        String fechadecreacion = "22/12/2012";
-//        String actualizadopor = "Miguel";
-//        String fechadeactualizacion = "24/12/2012";
-//        
-//        usu.editarusuario(dni, nombre, apellidopaterno, apellidomaterno, usuario,
-//                          correo, fechaingreso, cargo, rol, contrasena, creadopor,
-//                          fechadecreacion, actualizadopor, fechadeactualizacion);
+    public void testModificarCompra() throws Exception {
+        testRegistrarCompra(); //Llamando al primer test
+        String Tipodoc = "BV";
+        String Numdoc = "777-888";
+        String Moneda = "Euros";
+        String Fechaemision = "03/12/2012";
+        String Formapago = "Factura 30d";
+        String Detalle = "Servidor";
+        
+        usu.editarcompra(dni, nombre, apellidopaterno, apellidomaterno, usuario,
+                          correo, fechaingreso, cargo, rol, contrasena, creadopor,
+                          fechadecreacion, actualizadopor, fechadeactualizacion);
 //        
 //        //usu.eliminarusuario("u2012333d");                      //Generar error
 //        Usuario editar = usu.BuscarUsuario(usuario);
