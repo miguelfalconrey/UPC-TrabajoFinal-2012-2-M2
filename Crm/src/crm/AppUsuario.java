@@ -31,11 +31,10 @@ public class AppUsuario {
             }
         }
         return null;
-<<<<<<< HEAD
-=======
+
     }
     
-    public boolean ValidarUsuarioContrasena(String usu, String contrasena){
+    public boolean ValidarUsuarioContrasena(String usu, String contrasena) throws CRM_Exception {
         String mensaje = "";
         
         Usuario usuario = BuscarUsuario(usu);
@@ -43,9 +42,8 @@ public class AppUsuario {
             if (! mensaje.isEmpty())
             throw new CRM_Exception(mensaje);
         }
-        
+  
         return false;
->>>>>>> 20851cdc1a5a0df080afb9d85b1e4897e1d47235
     }
 
     public void eliminarusuario(String usuario) {
@@ -97,7 +95,6 @@ public class AppUsuario {
         }
 
         return rpta;
-
        
     }
 }

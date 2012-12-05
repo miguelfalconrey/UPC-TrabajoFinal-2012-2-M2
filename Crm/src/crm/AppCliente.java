@@ -49,8 +49,8 @@ public class AppCliente {
         }
     }
     
-    public void Registrar(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
-            String correo, String dni, String telefono, String fechaContacto)
+        public void Registrar(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
+                String correo, String dni, String telefono, String fechaContacto)
         throws CRM_Exception {
         ValidaDatos(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
         ValidaDuplicidad(dni);

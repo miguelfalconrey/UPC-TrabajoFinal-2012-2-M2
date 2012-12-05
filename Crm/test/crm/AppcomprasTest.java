@@ -49,7 +49,7 @@ public class AppcomprasTest {
     }
 
     
-//    @Test
+    @Test
     public void testModificarCompra() throws Exception {
         testRegistrarCompra(); //Llamando al primer test
         String Tipodoc = "BV";
@@ -59,16 +59,14 @@ public class AppcomprasTest {
         String Formapago = "Factura 30d";
         String Detalle = "Servidor";
         
-        usu.editarcompra(dni, nombre, apellidopaterno, apellidomaterno, usuario,
-                          correo, fechaingreso, cargo, rol, contrasena, creadopor,
-                          fechadecreacion, actualizadopor, fechadeactualizacion);
-//        
+        usu.editarcompra(Tipodoc, Numdoc, Moneda, Fechaemision, Formapago, Detalle);
+        
 //        //usu.eliminarusuario("u2012333d");                      //Generar error
-//        Usuario editar = usu.BuscarUsuario(usuario);
-//        assertEquals(cargo,editar.getCargo());
-//        assertEquals(rol,editar.getRol());
-//        assertEquals(actualizadopor,editar.getActualizadopor());
-//    }
+        Compra editar = usu.BuscarCompra(Tipodoc);
+        assertEquals(NumDoc,editar.getNumdoc());
+        assertEquals(Moneda,editar.getMoneda());
+        assertEquals(estad0,editar.getActualizadopor());
+    }
 //
 //    @Test
 //    public void testValidarUsuarioContrasena() throws Exception {
