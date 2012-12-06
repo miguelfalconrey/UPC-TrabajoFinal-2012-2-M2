@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class AppRolesTest {
 
-    AppRoles ar = new AppRoles();
+    AppRoles ar = new AppRoles();   //??//
 
     @Test
     public void testRegistrarRoles() throws Exception {
@@ -25,21 +25,16 @@ public class AppRolesTest {
         for (int i = 0; i < nombre.length; i++) {
             ar.RegistrarRoles(nombre[i], descripcion[i], creadopor[i], creadoel[i], actualizadopor[i], actualizadoel[i]);
         }
-
-
         for (int i = 0; i < nombre.length; i++) {
-            Roles rol = ar.buscar(nombre[i]);
-            assertNotNull(rol);
+            Roles nuevo = ar.buscar(nombre[i]);
+            assertNotNull(nuevo);
         }
-
     }
 
-    
     // Test Clase Permisos //
-    
     @Test
-    public void testRegistrarPermisos() throws Exception {
-        testRegistrarPermisos();
+    public void testRegistrarPermisos() throws Exception {  
+        testRegistrarRoles();
         String[] nombre = {"Administrador", "Supervisor"};
         String[] modulo = {"Ventas", "Compras"};
         boolean[] adicionar = {true, false};
@@ -51,8 +46,6 @@ public class AppRolesTest {
         for (int i = 0; i < nombre.length; i++) {
             ar.RegistrarPermisos(nombre[i], modulo[i], adicionar[i], editar[i], eliminar[i]);
         }
-
-
         for (int i = 0; i < nombre.length; i++) {
             Permisos permiso = ar.buscarPermisos(nombre[i]);
             assertNotNull(permiso);
@@ -60,35 +53,30 @@ public class AppRolesTest {
     }
 
     @Test
-    public void testEliminarPermiso() throws Exception {
+    public void testEliminarPermisos() throws Exception {
         testRegistrarPermisos(); //Llamando al primer test
         String nombre = "Administrador";
-        pe.eliminarpermiso(nombre);
-//        //ar.eliminarpermiso("u2012333d");                   //Generar error
-        Permisos nuevo = pe.BuscarPermisos(nombre);
+        ar.eliminarpermiso(nombre);
+        //       ar.eliminarpermiso("");                   //Generar error
+        Permisos nuevo = ar.buscarPermisos(nombre);
         assertNull("El permiso " + nombre + " no existe.", nuevo);
     }
 
-
     @Test
-    public void testModificarPermiso() throws Exception {
-        
+    public void testModificarPermisos() throws Exception {
+
         String[] nombre = {"Jefe"};
         String[] modulo = {"Demo"};
         boolean[] adicionar = {true};
         boolean[] editar = {true};
         boolean[] eliminar = {true};
-        
-        
-        ar.editarpermiso(nombre, modulo, adicionar, editar, eliminar);
-        
-        //usu.eliminarpermiso("u2012333d");                      //Generar error
-        Permisos editar = ar.buscarPermisos(nombre);
-        assertEquals(modulo,editar.getModulo());
- //       assertEquals(adicionar.getRol());
-//        assertEquals(editar,editar.get());
-    }
-    
-    
 
+        ar.editarpermiso(nombre, modulo, adicionar, editar, eliminar);
+
+//        ar.eliminarpermiso("u2012333d");                      //Generar error
+        Permisos editar = ar.buscarPermisos(nombre);
+        assertEquals(modulo, editar.getModulo());
+//        assertEquals(adicionar.());
+//        assertEquals(editar, editar.get());
+    }
 }

@@ -1,15 +1,13 @@
-
 package crm;
 
-
 public class Roles {
-    
-    String nombre;
-    String descripcion;
-    String creadopor;
-    String creadoel;
-    String actualizadopor;
-    String actualizadoel;
+
+    private String nombre;
+    private String descripcion;
+    private String creadopor;
+    private String creadoel;
+    private String actualizadopor;
+    private String actualizadoel;
 
     public Roles(String nombre, String descripcion, String creadopor, String creadoel, String actualizadopor, String actualizadoel) {
         this.nombre = nombre;
@@ -67,5 +65,4 @@ public class Roles {
     public void setActualizadoel(String actualizadoel) {
         this.actualizadoel = actualizadoel;
     }
-        
 }
