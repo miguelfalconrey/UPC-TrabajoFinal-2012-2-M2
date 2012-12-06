@@ -43,7 +43,7 @@ public class AppUsuarioTest {
                cargo[i], rol[i],contrasena[i], creadopor[i], fechadecreacion[i],
                actualizadopor[i], fechadeactualizacion[i]);
         }
-        Usuario nuevo = usu.BuscarUsuario("u2012333");//crea el usuario        
+        Usuario nuevo = usu.BuscarUsuario("u2012333");//busca el usuario registrado       
         assertEquals(true, rpta);
     }
 

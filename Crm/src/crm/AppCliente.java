@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class AppCliente {
     
     
-    private ArrayList<Ent_Cliente> Ent_Cliente;
+    private ArrayList<Cliente> Clientes;
 
     public AppCliente() {
-        Ent_Cliente = new ArrayList<Ent_Cliente>();
+        Clientes = new ArrayList<Cliente>();
     }
     
     private void ValidaDatos(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
-            String correo, String dni, String telefono, String fechaContacto)
+            String correo, String dni, String telefono, String fechaContacto, boolean estado)
         throws CRM_Exception{
         String mensaje = "";
         if (Nombres==null || Nombres.isEmpty())
@@ -37,6 +37,8 @@ public class AppCliente {
             mensaje += "Telefono no puede ser nulo o vacio";        
         if (fechaContacto==null || fechaContacto.isEmpty())
             mensaje += "Fecha de contacto no puede ser nulo o vacio";
+        if (estado==false)
+            mensaje += "Cliente no puede ser un Prospecto";
         if (! mensaje.isEmpty())
             throw new CRM_Exception(mensaje);
         }
@@ -50,24 +52,67 @@ public class AppCliente {
     }
     
     public void Registrar(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
-            String correo, String dni, String telefono, String fechaContacto)
+            String correo, String dni, String telefono, String fechaContacto, boolean estado)
         throws CRM_Exception {
-        ValidaDatos(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
+        
+        ValidaDatos(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto, estado);
         ValidaDuplicidad(dni);
-        Ent_Cliente nuevo = new Ent_Cliente(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
-        Ent_Cliente.add(nuevo);
+        
+        Cliente nuevo = new Cliente(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto, estado);
+        Clientes.add(nuevo);
     }
         
     public int getCantidadClientes() {
-        return Ent_Cliente.size();
+        return Clientes.size();
     }
 
-    public Ent_Cliente buscar(String dni) {
-        for(Ent_Cliente cliente : Ent_Cliente)
+    public Cliente buscar(String dni) {
+        for(Cliente cliente : Clientes)
             if (cliente.getDni().equals(dni))
                return cliente;
         return null;
     }
     
     
+    public void editarCliente(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
+            String correo, String dni, String telefono, String fechaContacto, boolean estado) {
+
+        int index; //Para guardar el indice
+
+        Cliente cli = buscar(dni);
+        cli.setCorreo(correo);
+        cli.setTelefono(telefono);
+        cli.setEstado(estado);
+        
+        index = Clientes.indexOf(cli);
+        Clientes.set(index, cli);
+    }
+    
+    public void eliminarCliente(String dni) {
+        
+        //Busca al usuario por su codigo
+        Cliente cli = buscar(dni);
+        //Elimina al usuario del arreglo de la lista
+        Clientes.remove(cli);
+        Clientes.indexOf(cli);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
