@@ -95,7 +95,7 @@ public class AppProspecto {
         Prospecto pro = buscarProspecto(dni);
         
         Prospectos.remove(pro);
-        Prospectos.indexOf(pro);
+        
     }
        
 }

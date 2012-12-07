@@ -1,0 +1,29 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch CRM
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	renamed:    Crm/src/crm/Ent_Cliente.java -> Crm/src/crm/Cliente.java
+#	deleted:    Crm/src/crm/Ent_Prospecto.java
+#	deleted:    Crm/test/crm/AppProspectoTest.java
+#	deleted:    Crm/test/crm/Ent_ClienteTest.java
+#	deleted:    Crm/test/crm/Ent_ProspectoTest.java
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   Crm/src/crm/AppCliente.java
+#	modified:   Crm/src/crm/AppProspecto.java
+#	modified:   Crm/src/crm/AppUsuario.java
+#	modified:   Crm/src/crm/Cliente.java
+#	modified:   Crm/test/crm/AppClienteTest.java
+#	modified:   Crm/test/crm/AppUsuarioTest.java
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	Crm/src/crm/Prospecto.java
+

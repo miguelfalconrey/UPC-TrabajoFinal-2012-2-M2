@@ -73,7 +73,7 @@ public class AppUsuario {
         }
     }
     
-    //Metodo para ingresar un nuevo Usuario
+    //Funcion para ingresar un nuevo Usuario
     
     public boolean RegistrarUsuario(String dni, String nombre, String apellidopaterno,
             String apellidomaterno, String usuario, String correo, String fechaingreso,
@@ -130,7 +130,7 @@ public class AppUsuario {
         Usuario usu = BuscarUsuario(usuario);
         //Elimina al usuario del arreglo de la lista
         usuarios.remove(usu);
-        usuarios.indexOf(usu);
+        
     }
 
     public void editarusuario(String dni, String nombre, String apellidopaterno,

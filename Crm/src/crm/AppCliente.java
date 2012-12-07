@@ -99,7 +99,7 @@ public class AppCliente {
         Cliente cli = buscar(dni);
         //Elimina al usuario del arreglo de la lista
         Clientes.remove(cli);
-        Clientes.indexOf(cli);
+        //Clientes.indexOf(cli);
     }
 
 

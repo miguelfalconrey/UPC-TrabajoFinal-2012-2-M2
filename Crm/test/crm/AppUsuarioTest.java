@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 public class AppUsuarioTest {
 
     AppUsuario usu = new AppUsuario();
+    
     //creacion de usuario
 
     @Test

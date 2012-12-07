@@ -86,7 +86,7 @@ public class Cliente {
         this.fechaContacto = fechaContacto;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
