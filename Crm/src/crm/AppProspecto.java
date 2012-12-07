@@ -12,24 +12,24 @@ import java.util.ArrayList;
  */
 public class AppProspecto {
     
-    private ArrayList<Ent_Prospecto> Ent_Prospecto;
+    private ArrayList<Prospecto> Prospectos;
 
     public AppProspecto() {
-        Ent_Prospecto = new ArrayList<Ent_Prospecto>();
+        Prospectos = new ArrayList<Prospecto>();        
     }
     
-    private void ValidaDatos(String EstadoProspecto, String Nombres,
-            String ApellidoPaterno, String ApellidoMaterno,
-            String correo, String dni, String telefono, String fechaContacto)
-        throws CRM_Exception{
+    
+    private void ValidaDatos(String nombres, String apellidopaterno, String apellidomaterno,
+            String correo, String dni, String telefono, String fechaContacto, boolean estado)
+        throws CRM_Exception {
+        
         String mensaje = "";
-        if (EstadoProspecto==null || EstadoProspecto.isEmpty())
-            mensaje += "Estado no puede ser nulo o no puede ser vacio";
-        if (Nombres==null || Nombres.isEmpty())
+        
+        if (nombres==null || nombres.isEmpty())
             mensaje += "Nombre no puede ser nulo o vacio";
-        if (ApellidoPaterno==null || ApellidoPaterno.isEmpty())
+        if (apellidopaterno==null || apellidopaterno.isEmpty())
             mensaje += "Apellido Paterno no puede ser nulo o vacio";
-        if (ApellidoMaterno==null || ApellidoMaterno.isEmpty())
+        if (apellidomaterno==null || apellidomaterno.isEmpty())
             mensaje += "Apellido Materno no puede ser nulo o vacio";
         if (correo==null || correo.isEmpty())
             mensaje += "Correo no puede ser nulo o vacio";
@@ -39,42 +39,63 @@ public class AppProspecto {
             mensaje += "Telefono no puede ser nulo o vacio";        
         if (fechaContacto==null || fechaContacto.isEmpty())
             mensaje += "Fecha de contacto no puede ser nulo o vacio";
+        if (estado==false)
+            mensaje += "Prospecto no puede ser un cliente";
         if (! mensaje.isEmpty())
             throw new CRM_Exception(mensaje);
         }
-        
+    
+    
     private void ValidaDuplicidad(String dni) 
             throws CRM_Exception {
-        if (buscar(dni) != null){
+        if (buscarProspecto(dni) != null){
             String mensaje = "DNI "+ dni + " ya esta registrado.";
             throw new CRM_Exception(mensaje);
         }
     }
     
-    public void Registrar(String EstadoProspecto, String Nombres,
-            String ApellidoPaterno, String ApellidoMaterno,
-            String correo, String dni, String telefono, String fechaContacto)
-        throws CRM_Exception {
-        ValidaDatos(EstadoProspecto, Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
+    public void Registrar(String nombres, String apellidopaterno, String apellidomaterno,
+            String correo, String dni, String telefono, String fechaContacto, boolean estado)
+        throws CRM_Exception{
+        
+        ValidaDatos(nombres, apellidopaterno, apellidomaterno, correo, dni, telefono, fechaContacto, estado);
         ValidaDuplicidad(dni);
-        Ent_Prospecto nuevo = new Ent_Prospecto(EstadoProspecto, Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto);
-        Ent_Prospecto.add(nuevo);
+        
+        Prospecto nuevo = new Prospecto(nombres, apellidopaterno, apellidomaterno, correo, dni, telefono, fechaContacto, estado);
+        Prospectos.add(nuevo);
     }
         
     public int getCantidadProspectos() {
-        return Ent_Prospecto.size();
+        return Prospectos.size();
     }
 
-    public Ent_Prospecto buscar(String dni) {
-       // Busqueda secuencial por dni
-        for(Ent_Prospecto prospecto : Ent_Prospecto)
+    public Prospecto buscarProspecto(String dni) {
+        for(Prospecto prospecto : Prospectos)
             if (prospecto.getDni().equals(dni))
                return prospecto;
         return null;
     }
+    
+    public void editarProspecto(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
+            String correo, String dni, String telefono, String fechaContacto, boolean estado) {
+
+        int index; //Para guardar el indice
+
+        Prospecto pro = buscarProspecto(dni);
+        pro.setCorreo(correo);
+        pro.setTelefono(telefono);
+        pro.setEstado(estado);
+        
+        index = Prospectos.indexOf(pro);
+        Prospectos.set(index, pro);
+    }
+    
+    public void eliminarProspecto(String dni) {
+        
+        Prospecto pro = buscarProspecto(dni);
+        
+        Prospectos.remove(pro);
+        Prospectos.indexOf(pro);
+    }
+       
 }
-    
-    
-
-    
-

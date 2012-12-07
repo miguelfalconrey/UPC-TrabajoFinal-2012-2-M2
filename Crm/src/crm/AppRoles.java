@@ -45,7 +45,7 @@ public class AppRoles {
 
     public Permisos buscarPermisos(String nombre) {
         for (Permisos usuario : permiso) {
-            if (usuario.getNombre().equals(nombre)) {
+            if (usuario.getModulo().equals(nombre)) {
                 return usuario;
             }
         }
@@ -115,7 +115,22 @@ public class AppRoles {
        public void eliminarpermiso(String nombre) {
         Permisos ap = buscarPermisos(nombre);
         permiso.remove(ap);
-        permiso.indexOf(ap);
+       
+    }
+
+    public void editarpermiso(String nombre, String modulo, boolean adicionar, boolean editar, boolean eliminar) {
+        
+        int index; //Para guardar el indice
+
+        Permisos ar = buscarPermisos(modulo);  //Nombre clave Modulo
+        ar.setNombre(nombre);
+        ar.setAdicionar(adicionar);
+        ar.setEditar(editar);
+        ar.setEliminar(eliminar);
+
+        index = permiso.indexOf(ar);
+        permiso.set(index, ar);
+        
     }
        
 

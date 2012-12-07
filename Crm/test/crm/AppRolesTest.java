@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class AppRolesTest {
 
-    AppRoles ar = new AppRoles();   //??//
+    AppRoles ar = new AppRoles();   //Llamado aplicacion central//
 
     @Test
     public void testRegistrarRoles() throws Exception {
@@ -47,7 +47,8 @@ public class AppRolesTest {
             ar.RegistrarPermisos(nombre[i], modulo[i], adicionar[i], editar[i], eliminar[i]);
         }
         for (int i = 0; i < nombre.length; i++) {
-            Permisos permiso = ar.buscarPermisos(nombre[i]);
+//            Permisos permiso = ar.buscarPermisos("xVentas");  // Generar error
+            Permisos permiso = ar.buscarPermisos(modulo[i]);
             assertNotNull(permiso);
         }
     }
@@ -55,28 +56,31 @@ public class AppRolesTest {
     @Test
     public void testEliminarPermisos() throws Exception {
         testRegistrarPermisos(); //Llamando al primer test
-        String nombre = "Administrador";
-        ar.eliminarpermiso(nombre);
-        //       ar.eliminarpermiso("");                   //Generar error
-        Permisos nuevo = ar.buscarPermisos(nombre);
-        assertNull("El permiso " + nombre + " no existe.", nuevo);
+        String modulo = "Ventas";
+//        ar.eliminarpermiso("xVentas"); //Generar error
+        ar.eliminarpermiso(modulo);
+        Permisos nuevo = ar.buscarPermisos(modulo);
+        assertNull("El aplicativo " + modulo + " no ha sido eliminado.", nuevo);
     }
 
     @Test
     public void testModificarPermisos() throws Exception {
-
-        String[] nombre = {"Jefe"};
-        String[] modulo = {"Demo"};
-        boolean[] adicionar = {true};
-        boolean[] editar = {true};
-        boolean[] eliminar = {true};
+        testRegistrarPermisos(); //Llamando al primer test
+        String nombre = "Jefe";
+        String modulo = "Compras";
+        boolean adicionar = true;
+        boolean editar = true;
+        boolean eliminar = true;
 
         ar.editarpermiso(nombre, modulo, adicionar, editar, eliminar);
-
-//        ar.eliminarpermiso("u2012333d");                      //Generar error
-        Permisos editar = ar.buscarPermisos(nombre);
-        assertEquals(modulo, editar.getModulo());
-//        assertEquals(adicionar.());
-//        assertEquals(editar, editar.get());
+        Permisos editarpermisos = ar.buscarPermisos(modulo);
+      
+    //    assertEquals("No se puede modificar el nombre",nombre,editarpermisos.getModulo()); Generar error
+              
+        assertEquals(nombre,editarpermisos.getNombre());
+        assertEquals(modulo,editarpermisos.getModulo());
+        assertEquals(adicionar,editarpermisos.getAdicionar());
+        assertEquals(editar,editarpermisos.getEditar());
+        assertEquals(eliminar,editarpermisos.getEliminar());
     }
 }

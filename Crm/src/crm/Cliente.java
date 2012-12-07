@@ -8,49 +8,50 @@ package crm;
  *
  * @author gerald
  */
-public class Ent_Cliente {
+public class Cliente {
     
-    private String Nombres;
-    private String ApellidoPaterno;
-    private String ApellidoMaterno;
+    private String nombres;
+    private String apellidopaterno;
+    private String apellidomaterno;
     private String correo;
     private String dni;
     private String telefono;
     private String fechaContacto;
+    private boolean estado;
 
-    public Ent_Cliente(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
-            String correo, String dni, String telefono, String fechaContacto) {
-        this.Nombres = Nombres;
-        this.ApellidoPaterno = ApellidoPaterno;
-        this.ApellidoMaterno = ApellidoMaterno;
+    public Cliente(String nombres, String apellidopaterno, String apellidomaterno, String correo, String dni, String telefono, String fechaContacto, boolean estado) {
+        this.nombres = nombres;
+        this.apellidopaterno = apellidopaterno;
+        this.apellidomaterno = apellidomaterno;
         this.correo = correo;
         this.dni = dni;
         this.telefono = telefono;
         this.fechaContacto = fechaContacto;
+        this.estado = estado;
     }
 
     public String getNombres() {
-        return Nombres;
+        return nombres;
     }
 
-    public void setNombres(String Nombres) {
-        this.Nombres = Nombres;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getApellidoPaterno() {
-        return ApellidoPaterno;
+    public String getApellidopaterno() {
+        return apellidopaterno;
     }
 
-    public void setApellidoPaterno(String ApellidoPaterno) {
-        this.ApellidoPaterno = ApellidoPaterno;
+    public void setApellidopaterno(String apellidopaterno) {
+        this.apellidopaterno = apellidopaterno;
     }
 
-    public String getApellidoMaterno() {
-        return ApellidoMaterno;
+    public String getApellidomaterno() {
+        return apellidomaterno;
     }
 
-    public void setApellidoMaterno(String ApellidoMaterno) {
-        this.ApellidoMaterno = ApellidoMaterno;
+    public void setApellidomaterno(String apellidomaterno) {
+        this.apellidomaterno = apellidomaterno;
     }
 
     public String getCorreo() {
@@ -84,7 +85,13 @@ public class Ent_Cliente {
     public void setFechaContacto(String fechaContacto) {
         this.fechaContacto = fechaContacto;
     }
-    
-      
-    
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
 }
