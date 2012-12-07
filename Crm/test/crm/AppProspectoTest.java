@@ -73,7 +73,7 @@ public class AppProspectoTest {
         pro.editarProspecto(nombres, apellidopaterno, apellidomaterno, dni,
                           correo, telefono, fechaContacto, estado);
         
-        //usu.eliminarusuario("u2012333d");                      //Generar error
+        //usu.eliminarProspecto("u2012333d");                      //Generar error
         Prospecto editar = pro.buscarProspecto(dni);
         assertEquals(correo,editar.getCorreo());
         assertEquals(telefono,editar.getTelefono());
