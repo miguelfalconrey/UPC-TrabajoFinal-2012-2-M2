@@ -115,7 +115,7 @@ public class AppUsuario {
         Usuario usu = BuscarUsuario(usuario);
         //Elimina al usuario del arreglo de la lista
         usuarios.remove(usu);
-        usuarios.indexOf(usu);
+        
     }
 
     public void editarusuario(String dni, String nombre, String apellidopaterno,
