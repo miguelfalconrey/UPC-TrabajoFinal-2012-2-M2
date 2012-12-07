@@ -16,12 +16,12 @@ import static org.junit.Assert.*;
  * @author gerald
  */
 public class AppClienteTest {
-    
+
     AppCliente cli = new AppCliente();
-    
+
     @Test
-    public void testRegistrar() throws Exception {
-        
+    public void testRegistrarCliente() throws Exception {
+
         String[] nombres = {"Juan", "Carlos"};
         String[] apellidopaterno = {"Perez", "Lopez"};
         String[] apellidomaterno = {"Loza", "Giraldo"};
@@ -29,45 +29,55 @@ public class AppClienteTest {
         String[] correo = {"u201212@gmail.com", "u2012333@hotmail.com"};
         String[] telefono = {"987566321", "8524569"};
         String[] fechaContacto = {"21/05/2010", "30/01/2011"};
-        boolean[] estado = {true,false};
+        boolean[] estado = {true, true};
+        // boolena[] estado = {true, false};
         
-
-        boolean rpta = false;
-
+        
         for (int i = 0; i < dni.length; i++) {
-        rpta = cli.Registrar(nombres[i], apellidopaterno[i], apellidomaterno[i], dni[i],
-                correo[i], telefono[i], fechaContacto[i], estado[i]);
+            cli.Registrar(nombres[i], apellidopaterno[i], apellidomaterno[i], dni[i],
+                    correo[i], telefono[i], fechaContacto[i], estado[i]);
         }
-        Cliente nuevo = cli.buscar("12345678");       
-        assertEquals(true, rpta);
+        
+        for (int i = 0; i < dni.length; i++) {
+            Cliente nuevo = cli.buscar(dni[i]);
+            assertNotNull(nuevo);
+        }
+
     }
 
-    /**
-     * Test of getCantidadClientes method, of class AppCliente.
-     */
     @Test
-    public void testGetCantidadClientes() {
-        System.out.println("getCantidadClientes");
-        AppCliente instance = new AppCliente();
-        int expResult = 0;
-        int result = instance.getCantidadClientes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+    public void testEliminarCliente() throws Exception {
+        testRegistrarCliente(); //Llamando al primer test
+        String dni = "12345678";
+        cli.eliminarCliente(dni);
+        //cli.eliminarCliente("u2012333d");                   //Generar error
+        Cliente nuevo = cli.buscar(dni);
+        assertNull("El usuario " + dni + " no existe.", nuevo);
     }
 
-    /**
-     * Test of buscar method, of class AppCliente.
-     */
+    
     @Test
-    public void testBuscar() {
-        System.out.println("buscar");
-        String dni = "";
-        AppCliente instance = new AppCliente();
-        Cliente expResult = null;
-        Cliente result = instance.buscar(dni);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+    public void testEditarCliente() throws Exception {
+        testRegistrarCliente(); //Llamando al primer test
+        
+        String nombres = "Juan";
+        String apellidopaterno = "Perez";
+        String apellidomaterno = "Loza";
+        String dni = "12345678";
+        String correo = "u2012333@hotmail.com";
+        String telefono = "2255336";
+        String fechaContacto = "21/05/2010";
+        boolean estado =  false;
+        
+        cli.editarCliente(nombres, apellidopaterno, apellidomaterno, dni,
+                          correo, telefono, fechaContacto, estado);
+        
+        //usu.eliminarusuario("u2012333d");                      //Generar error
+        Cliente editar = cli.buscar(dni);
+        assertEquals(correo,editar.getCorreo());
+        assertEquals(telefono,editar.getTelefono());
+        assertEquals(estado,editar.getEstado());
     }
+    
+    
 }

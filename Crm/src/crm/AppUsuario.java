@@ -73,7 +73,7 @@ public class AppUsuario {
         }
     }
     
-    //Metodo para ingresar un nuevo Usuario
+    //Funcion para ingresar un nuevo Usuario
     
     public boolean RegistrarUsuario(String dni, String nombre, String apellidopaterno,
             String apellidomaterno, String usuario, String correo, String fechaingreso,
