@@ -49,10 +49,10 @@ public class AppUsuario {
          * a vacio - null), ya que en estos campos recien se ingresaran datos cuando se haya realizado alguna
          * modificacion posterior a su registro*/
         
-        if (actualizadopor != null)
-            mensaje += "No se puede ingresar datos en campo actualizado por";
-        if (fechadeactualizacion != null)
-            mensaje += "No se puede ingresar datos en campo fecha de actualización";
+//        if (actualizadopor != null)
+//            mensaje += "No se puede ingresar datos en campo actualizado por";
+//        if (fechadeactualizacion != null)
+//            mensaje += "No se puede ingresar datos en campo fecha de actualización";
         
         
         if (! mensaje.isEmpty())
@@ -75,25 +75,24 @@ public class AppUsuario {
     
     //Funcion para ingresar un nuevo Usuario
     
-    public boolean RegistrarUsuario(String dni, String nombre, String apellidopaterno,
+    public void RegistrarUsuario(String dni, String nombre, String apellidopaterno,
             String apellidomaterno, String usuario, String correo, String fechaingreso,
             String cargo, String rol, String contrasena, String creadopor,
             String fechadecreacion, String actualizadopor, String fechadeactualizacion) throws CRM_Exception {
 
-        boolean rpta = false;
+        
         
         //Se llama a los metodos de validación antes de realizar el registro del usuario
-        ValidacionDatos(dni, nombre, apellidopaterno, apellidomaterno, usuario, correo, fechaingreso, cargo,
-                rol, contrasena, creadopor, fechadecreacion, actualizadopor, fechadeactualizacion);
-        ValidacionDuplicidad(usuario);      
+       ValidacionDatos(dni, nombre, apellidopaterno, apellidomaterno, usuario, correo, fechaingreso, cargo,
+               rol, contrasena, creadopor, fechadecreacion, actualizadopor, fechadeactualizacion);
+       ValidacionDuplicidad(usuario);      
         
         //Se crea un nuevo objeto de la clase Usuario        
-        rpta = usuarios.add(new Usuario(dni, nombre, apellidopaterno, apellidomaterno,
+        usuarios.add(new Usuario(dni, nombre, apellidopaterno, apellidomaterno,
                 usuario, correo, fechaingreso, cargo, rol, contrasena, creadopor,
                 fechadecreacion, actualizadopor, fechadeactualizacion));
         
-        return rpta;
-    }
+          }
     
     //Metodo para buscar usuario registrado atraves de su codigo de usuario ("usuario")
     
@@ -105,7 +104,7 @@ public class AppUsuario {
         }
         return null;
 
-<<<<<<< HEAD
+
     }
     
     public boolean ValidarUsuarioContrasena(String usu, String contrasena) throws CRM_Exception {
@@ -118,18 +117,16 @@ public class AppUsuario {
         }
   
         return false;
-=======
->>>>>>> d2f6a244eba67a0f6c5b312a39059800bf3c3cca
+
     }
 
     //Metodo para eliminar un usuario
     
     public void eliminarusuario(String usuario) {
         
-        //Busca al usuario por su codigo
-        Usuario usu = BuscarUsuario(usuario);
-        //Elimina al usuario del arreglo de la lista
-        usuarios.remove(usu);
+        
+        Usuario usu = BuscarUsuario(usuario);   //Busca al usuario por su codigo
+        usuarios.remove(usu);       //Elimina al usuario de la lista
         
     }
 
@@ -174,11 +171,6 @@ public class AppUsuario {
         }
 
         return rpta;
-<<<<<<< HEAD
-       
-=======
 
-
->>>>>>> d2f6a244eba67a0f6c5b312a39059800bf3c3cca
     }
 }

@@ -46,20 +46,15 @@ public class AppRoles {
 
     public Permisos buscarPermisos(String nombre) {
         for (Permisos usuario : permiso) {
-            if (usuario.getNombre().equals(nombre)) {
+            if (usuario.getModulo().equals(nombre)) {
                 return usuario;
             }
         }
         return null;
     }
 
-
-
+// ROLES ---- >> //
     
-    
-    
-    
-
     public void RegistrarRoles(String nombre, String descripcion, String creadopor, String creadoel, String actualizadopor, String actualizadoel)
             throws CRM_Exception {
         ValidaDatosRoles(nombre, descripcion, creadopor, creadoel, actualizadopor, actualizadoel);
@@ -74,22 +69,19 @@ public class AppRoles {
             mensaje += "Nombre no puede ser nulo o vacio";
         }
         if (descripcion == null || descripcion.isEmpty()) {
-            mensaje += "Apellido Paterno no puede ser nulo o vacio";
+            mensaje += "\nLa descripcion no puede ser nula o vacia";
         }
         if (creadopor == null || creadopor.isEmpty()) {
-            mensaje += "Apellido Materno no puede ser nulo o vacio";
+            mensaje += "\nNo puede ser nulo o vacio";
         }
         if (creadoel == null || creadoel.isEmpty()) {
-            mensaje += "Correo no puede ser nulo o vacio";
+            mensaje += "\nNo puede ser nulo o vacio";
         }
-        if (actualizadopor == null || actualizadopor.isEmpty()) {
-            mensaje += "Dni no puede ser nulo o vacio";
+        if (actualizadopor == null) {
+            mensaje += "\nNo puede ser nulo";
         }
-        if (actualizadopor == null || actualizadopor.isEmpty()) {
-            mensaje += "Telefono no puede ser nulo o vacio";
-        }
-        if (actualizadoel == null || actualizadoel.isEmpty()) {
-            mensaje += "Fecha de contacto no puede ser nulo o vacio";
+        if (actualizadoel == null) {
+            mensaje += "\nNo puede ser nulo";
         }
         if (!mensaje.isEmpty()) {
             throw new CRM_Exception(mensaje);
@@ -121,5 +113,26 @@ public class AppRoles {
         }
     }
 
+       public void eliminarpermiso(String nombre) {
+        Permisos ap = buscarPermisos(nombre);
+        permiso.remove(ap);
+       
+    }
+
+    public void editarpermiso(String nombre, String modulo, boolean adicionar, boolean editar, boolean eliminar) {
+        
+        int index; //Para guardar el indice
+
+        Permisos ar = buscarPermisos(modulo);  //Nombre clave Modulo
+        ar.setNombre(nombre);
+        ar.setAdicionar(adicionar);
+        ar.setEditar(editar);
+        ar.setEliminar(eliminar);
+
+        index = permiso.indexOf(ar);
+        permiso.set(index, ar);
+        
+    }
+       
 
 }

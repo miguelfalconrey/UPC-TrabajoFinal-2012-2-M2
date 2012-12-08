@@ -35,8 +35,8 @@ public class AppProspectoTest {
         
         
         for (int i = 0; i < dni.length; i++) {
-            pro.Registrar(nombres[i], apellidopaterno[i], apellidomaterno[i], dni[i],
-                    correo[i], telefono[i], fechaContacto[i], estado[i]);
+            pro.Registrar(nombres[i], apellidopaterno[i], apellidomaterno[i], correo[i],
+                    dni[i], telefono[i], fechaContacto[i], estado[i]);
         }
         
         for (int i = 0; i < dni.length; i++) {
@@ -70,8 +70,8 @@ public class AppProspectoTest {
         String fechaContacto = "21/12/2009";
         boolean estado =  false;
         
-        pro.editarProspecto(nombres, apellidopaterno, apellidomaterno, dni,
-                          correo, telefono, fechaContacto, estado);
+        pro.editarProspecto(nombres, apellidopaterno, apellidomaterno, correo,
+                          dni, telefono, fechaContacto, estado);
         
         //usu.eliminarProspecto("u2012333d");                      //Generar error
         Prospecto editar = pro.buscarProspecto(dni);

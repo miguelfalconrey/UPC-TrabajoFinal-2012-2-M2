@@ -21,21 +21,21 @@ public class AppClienteTest {
 
     @Test
     public void testRegistrarCliente() throws Exception {
-
+//        String[] nombres = {"", "Carlos"};  //Generar error al pretender ingresar nulo
         String[] nombres = {"Juan", "Carlos"};
         String[] apellidopaterno = {"Perez", "Lopez"};
         String[] apellidomaterno = {"Loza", "Giraldo"};
         String[] dni = {"12345678", "87654321"};
         String[] correo = {"u201212@gmail.com", "u2012333@hotmail.com"};
-        String[] telefono = {"987566321", "8524569"};
+        String[] telefono = {"987566321", "988524569"};
         String[] fechaContacto = {"21/05/2010", "30/01/2011"};
         boolean[] estado = {true, true};
-        // boolena[] estado = {true, false};
+        // boolean[] estado = {true, false};
         
         
         for (int i = 0; i < dni.length; i++) {
-            cli.Registrar(nombres[i], apellidopaterno[i], apellidomaterno[i], dni[i],
-                    correo[i], telefono[i], fechaContacto[i], estado[i]);
+            cli.Registrar(nombres[i], apellidopaterno[i], apellidomaterno[i], correo[i],
+                    dni[i], telefono[i], fechaContacto[i], estado[i]);
         }
         
         for (int i = 0; i < dni.length; i++) {
@@ -49,8 +49,8 @@ public class AppClienteTest {
     public void testEliminarCliente() throws Exception {
         testRegistrarCliente(); //Llamando al primer test
         String dni = "12345678";
-        cli.eliminarCliente(dni);
-        //cli.eliminarCliente("u2012333d");                   //Generar error
+       // cli.eliminarCliente(dni);
+        cli.eliminarCliente("u2012333d");                   //Generar error
         Cliente nuevo = cli.buscar(dni);
         assertNull("El usuario " + dni + " no existe.", nuevo);
     }
@@ -69,11 +69,15 @@ public class AppClienteTest {
         String fechaContacto = "21/05/2010";
         boolean estado =  false;
         
-        cli.editarCliente(nombres, apellidopaterno, apellidomaterno, dni,
-                          correo, telefono, fechaContacto, estado);
+        cli.editarCliente(nombres, apellidopaterno, apellidomaterno, correo,
+                       dni, telefono, fechaContacto, estado);
         
-        //usu.eliminarusuario("u2012333d");                      //Generar error
-        Cliente editar = cli.buscar(dni);
+        Cliente editar = cli.buscar(dni); //Verificacion de la edicion
+
+   //           assertEquals("u201212@gmail.com",editar.getCorreo()); //Generacion error, 
+         // Se verifica que el objeto generado y el esperado sean iguales
+      
+        
         assertEquals(correo,editar.getCorreo());
         assertEquals(telefono,editar.getTelefono());
         assertEquals(estado,editar.getEstado());

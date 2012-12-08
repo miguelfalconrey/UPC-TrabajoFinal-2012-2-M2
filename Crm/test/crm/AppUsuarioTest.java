@@ -11,17 +11,17 @@ import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 
 /**
- * @author gerald
+ * @author Miguel
  */
 public class AppUsuarioTest {
 
-    AppUsuario usu = new AppUsuario();
+    AppUsuario usu = new AppUsuario(); //Creacion de usuario
     
-    //creacion de usuario
-
     @Test
+
     public void testRegistrarUsuario() throws Exception {
-        String[] dni = {"45", "34"};
+//        String[] dni = {"", "34324567"}; // Codigo de validacion error al ingresar DNI vacio
+        String[] dni = {"45543456", "34324567"}; 
         String[] nombre = {"Juan", "Carlos"};
         String[] apellidopaterno = {"Perez", "Lopez"};
         String[] apellidomaterno = {"Loza", "Giraldo"};
@@ -29,64 +29,70 @@ public class AppUsuarioTest {
         String[] correo = {"u201212@gmail.com", "u2012333@hotmail.com"};
         String[] fechaingreso = {"21/10/2011", "21/12/2012"};
         String[] cargo = {"Tecnico", "Administrador"};
-        String[] rol = {"soporte", "Service"};
-        String[] contrasena = {"12345678", "654321"};
-        String[] creadopor = {"Carlos", "Adminweb"};
+        String[] rol = {"Soporte", "Call Center"};
+        String[] contrasena = {"12345678", "87654321"};
+        String[] creadopor = {"Alfredo", "Enrique"};
         String[] fechadecreacion = {"21/10/2011", "22/12/2012"};
         String[] actualizadopor = {"", ""};
         String[] fechadeactualizacion = {"", ""};
 
-        boolean rpta = false;
-
         for (int i = 0; i < dni.length; i++) {
-        rpta = usu.RegistrarUsuario(dni[i], nombre[i], apellidopaterno[i], 
+        usu.RegistrarUsuario(dni[i], nombre[i], apellidopaterno[i], 
                apellidomaterno[i], usuario[i], correo[i], fechaingreso[i], 
                cargo[i], rol[i],contrasena[i], creadopor[i], fechadecreacion[i],
                actualizadopor[i], fechadeactualizacion[i]);
         }
-        Usuario nuevo = usu.BuscarUsuario("u2012333");//busca el usuario registrado       
-        assertEquals(true, rpta);
+        for (int i = 0; i < dni.length; i++){
+        Usuario nuevo = usu.BuscarUsuario(usuario[i]);
+        assertNotNull(nuevo); //verifica que el objeto no sea nulo, en cuyo caso la prueba será fallida. 
+        }
     }
 
     
     @Test
     public void testEliminarUsuario() throws Exception {
-        testRegistrarUsuario(); //Llamando al primer test
-        String usuario = "u2012333";
+        testRegistrarUsuario(); //Llamando al primer test para asegurarnos que se tenga un usuario registrado
+        String usuario = "u2012333"; 
+        //Registro debe ser igual al usuario registrado que queremos eliminar
         usu.eliminarusuario(usuario);
-        //usu.eliminarusuario("u2012333d");                   //Generar error
-        Usuario nuevo = usu.BuscarUsuario(usuario);
-        assertNull("El usuario " + usuario + " no existe.", nuevo);
+//       usu.eliminarusuario("u2012333x");        //Linea para generar error "Eliminar Usuario"
+       Usuario nuevo = usu.BuscarUsuario(usuario);
+       assertNull("El usuario " + usuario + " no existe.", nuevo);
     }
 
     
     @Test
     public void testModificarUsuario() throws Exception {
-        testRegistrarUsuario(); //Llamando al primer test
-        String dni = "34";
+        testRegistrarUsuario(); //Llama al primer test para asegurarnos 
+                                 //que se tenga un usuario registrado
+        String dni = "45543456";  
         String nombre = "Carlos";
-        String apellidopaterno = "Lopez";
+        String apellidopaterno = "Palomares";
         String apellidomaterno = "Giraldo";
-        String usuario = "u2012333";
-        String correo = "u2012333@hotmail.com";
+        String usuario = "u2012333";                //Clave busqueda principal
+        String correo = "u2012xxxx@hotmail.com";
         String fechaingreso = "21/12/2012";
-        String cargo = "Helpdesk";
+        String cargo = "Supervisor";
         String rol =  "Super";
-        String contrasena = "654321";
-        String creadopor = "Adminweb";
+        String contrasena = "11654321";
+        String creadopor = "Admin";
         String fechadecreacion = "22/12/2012";
         String actualizadopor = "Miguel";
         String fechadeactualizacion = "24/12/2012";
         
         usu.editarusuario(dni, nombre, apellidopaterno, apellidomaterno, usuario,
-                          correo, fechaingreso, cargo, rol, contrasena, creadopor,
-                          fechadecreacion, actualizadopor, fechadeactualizacion);
+                         correo, fechaingreso, cargo, rol, contrasena, creadopor,
+                         fechadecreacion, actualizadopor, fechadeactualizacion);
         
-        //usu.eliminarusuario("u2012333d");                      //Generar error
-        Usuario editar = usu.BuscarUsuario(usuario);
-        assertEquals(cargo,editar.getCargo());
+         Usuario editar = usu.BuscarUsuario(usuario); //Verificacion de la edicion
+
+ //      assertEquals("Administrador",editar.getCargo()); //Generacion error, 
+          //Se verifica que el objeto generado y el esperado sean iguales
+
+        assertEquals(cargo,editar.getCargo()); //Comparar que se haya modificado
         assertEquals(rol,editar.getRol());
         assertEquals(actualizadopor,editar.getActualizadopor());
+        
     }
 
     @Test
@@ -94,8 +100,8 @@ public class AppUsuarioTest {
     testRegistrarUsuario();
     
     String usuario="u2012333";
-    //String usuario="u2012333xxx";                            //Generar error
-    String contrasena="654321";
+//    String usuario="u2012333xxx";                            //Generar error
+    String contrasena="87654321";
     boolean rpta = false;
     
     rpta=usu.validarusuariocontrasena(usuario,contrasena);

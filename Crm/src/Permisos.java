@@ -34,7 +34,7 @@ public class Permisos {
         this.modulo = modulo;
     }
 
-    public boolean isAdicionar() {
+    public boolean getAdicionar() {
         return adicionar;
     }
 
@@ -42,7 +42,7 @@ public class Permisos {
         this.adicionar = adicionar;
     }
 
-    public boolean isEditar() {
+    public boolean getEditar() {
         return editar;
     }
 
@@ -50,7 +50,7 @@ public class Permisos {
         this.editar = editar;
     }
 
-    public boolean isEliminar() {
+    public boolean getEliminar() {
         return eliminar;
     }
 

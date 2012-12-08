@@ -13,6 +13,7 @@ public class AppRolesTest {
 
     @Test
     public void testRegistrarRoles() throws Exception {
+//        String[] nombre = {"", "Supervisor"};   //Generar error al querer registrar en blanco
         String[] nombre = {"Administrador", "Supervisor"};
         String[] descripcion = {"Control Total", "Lectura"};
         String[] creadopor = {"Miguel", "Gerald"};
@@ -23,7 +24,8 @@ public class AppRolesTest {
         boolean rpta = false;
 
         for (int i = 0; i < nombre.length; i++) {
-            ar.RegistrarRoles(nombre[i], descripcion[i], creadopor[i], creadoel[i], actualizadopor[i], actualizadoel[i]);
+            ar.RegistrarRoles(nombre[i], descripcion[i], creadopor[i],
+                creadoel[i], actualizadopor[i], actualizadoel[i]);
         }
         for (int i = 0; i < nombre.length; i++) {
             Roles nuevo = ar.buscar(nombre[i]);
@@ -57,8 +59,8 @@ public class AppRolesTest {
     public void testEliminarPermisos() throws Exception {
         testRegistrarPermisos(); //Llamando al primer test
         String modulo = "Ventas";
-//        ar.eliminarpermiso("xVentas"); //Generar error
-        ar.eliminarpermiso(modulo);
+        ar.eliminarpermiso("xVentas"); //Generar error
+//        ar.eliminarpermiso(modulo);
         Permisos nuevo = ar.buscarPermisos(modulo);
         assertNull("El aplicativo " + modulo + " no ha sido eliminado.", nuevo);
     }
@@ -75,7 +77,7 @@ public class AppRolesTest {
         ar.editarpermiso(nombre, modulo, adicionar, editar, eliminar);
         Permisos editarpermisos = ar.buscarPermisos(modulo);
       
-    //    assertEquals("No se puede modificar el nombre",nombre,editarpermisos.getModulo()); Generar error
+// assertEquals("No se puede modificar el nombre",nombre,editarpermisos.getModulo()); //Generar error
               
         assertEquals(nombre,editarpermisos.getNombre());
         assertEquals(modulo,editarpermisos.getModulo());

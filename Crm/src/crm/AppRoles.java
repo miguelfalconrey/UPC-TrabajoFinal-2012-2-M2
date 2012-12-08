@@ -54,15 +54,16 @@ public class AppRoles {
 
 // ROLES ---- >> //
     
-    public void RegistrarRoles(String nombre, String descripcion, String creadopor, String creadoel, String actualizadopor, String actualizadoel)
-            throws CRM_Exception {
+    public void RegistrarRoles(String nombre, String descripcion, String creadopor, String creadoel, 
+            String actualizadopor, String actualizadoel) throws CRM_Exception {
         ValidaDatosRoles(nombre, descripcion, creadopor, creadoel, actualizadopor, actualizadoel);
         ValidaDuplicidadRoles(nombre);
 
         rol.add(new Roles(nombre, descripcion, creadopor, creadoel, actualizadopor, actualizadoel));
     }
 
-    private void ValidaDatosRoles(String nombre, String descripcion, String creadopor, String creadoel, String actualizadopor, String actualizadoel) throws CRM_Exception {
+    private void ValidaDatosRoles(String nombre, String descripcion, String creadopor, String creadoel, 
+            String actualizadopor, String actualizadoel) throws CRM_Exception {
         String mensaje = "";
         if (nombre == null || nombre.isEmpty()) {
             mensaje += "Nombre no puede ser nulo o vacio";

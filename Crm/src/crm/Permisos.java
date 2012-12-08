@@ -3,7 +3,7 @@ package crm;
 
 public class Permisos {
 
-    private String nombre;
+    private String nombre;  //Elementos accedidos por su propia clase
     private String modulo;
     private boolean adicionar;
     private boolean editar;

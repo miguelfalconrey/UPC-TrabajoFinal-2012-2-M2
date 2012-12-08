@@ -51,19 +51,17 @@ public class AppCliente {
         }
     }
     
-<<<<<<< HEAD
-        public void Registrar(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
-                String correo, String dni, String telefono, String fechaContacto)
-=======
+
     public void Registrar(String Nombres, String ApellidoPaterno, String ApellidoMaterno,
             String correo, String dni, String telefono, String fechaContacto, boolean estado)
->>>>>>> d2f6a244eba67a0f6c5b312a39059800bf3c3cca
+
         throws CRM_Exception {
         
         ValidaDatos(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto, estado);
         ValidaDuplicidad(dni);
         
-        Cliente nuevo = new Cliente(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, fechaContacto, estado);
+        Cliente nuevo = new Cliente(Nombres, ApellidoPaterno, ApellidoMaterno, correo, dni, telefono, 
+                fechaContacto, estado);
         Clientes.add(nuevo);
     }
         
@@ -72,9 +70,9 @@ public class AppCliente {
     }
 
     public Cliente buscar(String dni) {
-        for(Cliente cliente : Clientes)
-            if (cliente.getDni().equals(dni))
-               return cliente;
+        for(Cliente xx : Clientes)
+            if (xx.getDni().trim().equals(dni))
+               return xx;
         return null;
     }
     
